@@ -25,6 +25,7 @@ local ScriptManager = {
     },
     GitBase = "https://raw.githubusercontent.com/xGGHubx/GGHubScripts/main/"
 }
+Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/xGGHubx/GGHubScripts/refs/heads/main/Misc/Notification.luau"))()
 function ScriptManager:LoadFor(gameId)
     local path = self.Registry[gameId]
     if not path then
@@ -33,6 +34,7 @@ function ScriptManager:LoadFor(gameId)
     end
     local fullURL = self.GitBase .. path
     local ok, err = pcall(function()
+        Notify("GGHub", "Loading...")
         loadstring(game:HttpGet(fullURL))()
     end)
     if not ok then
